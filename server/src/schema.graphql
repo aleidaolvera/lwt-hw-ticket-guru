@@ -1,0 +1,79 @@
+type Query {
+  customers: [Customer]!
+  customerById(id: ID!): Customer!
+  customersById(ids: [ID]!): [Customer]!
+  shows: [Show]!
+  showById(id: ID!): Show!
+  venues: [Venue]!
+  venueById(id: ID!): Venue!
+  performances: [Performance]!
+  performancesByShowId(id: ID!): [Performance]!
+  performanceById(id: ID!): Performance!
+  seatsAvailableByPerformanceId(id: ID!): Performance!
+  seatsAvailableByLevelAndPerformanceId(
+    levelId: ID!
+    performanceId: ID!
+  ): Performance!
+}
+
+type Customer {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  address: String
+}
+
+type Level {
+  id: ID!
+  name: String!
+  numRows: Int!
+  seatsPerRow: Int!
+  seatsAvailable: Int!
+  price: Float!
+  venueId: Int!
+}
+
+type Performance {
+  id: ID!
+  showId: Int!
+  showTime: String!
+  levels: [Level]
+  seats: [Seat]
+  show: Show
+  seatsAvailable: Int
+}
+
+type Reservation {
+  id: ID!
+  reservationName: String!
+  expirationDate: String!
+  resrevationConfirmed: Boolean!
+  customerId: Int!
+}
+
+type Seat {
+  id: ID!
+  performanceId: Int!
+  levelId: Int!
+  reservationId: Int!
+  row: Int!
+  seatNumber: Int!
+}
+
+type Show {
+  id: ID!
+  name: String!
+  description: String!
+  venue: Venue!
+  performances: [Performance]!
+  url: String
+}
+
+type Venue {
+  id: ID!
+  name: String!
+  description: String!
+  address: String!
+  url: String
+}
