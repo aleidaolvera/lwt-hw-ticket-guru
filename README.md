@@ -1,3 +1,6 @@
+# About the Project
+The web app was meant to be able to provide users a service to be able to reserve tickets for upcoming shows / performances by a set of performers. The web app interacts with the following [ticket-guru-service]("http://ec2-54-159-33-6.compute-1.amazonaws.com:5005/ticket-guru/api/docs") API.
+
 # Installing Dependencies
 
 ## Front-End
